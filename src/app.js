@@ -2,7 +2,7 @@ const express = require("express");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 const authRouter = require("./routers/authRoutes");
-const chargeRouter = require("./routers/stripe");
+const stripeRouter = require("./routers/stripe");
 require("./models/user");
 require("./db/mongoose");
 require("./services/passport");
@@ -20,6 +20,6 @@ app.use(passport.session());
 
 app.use(express.json());
 app.use(authRouter);
-app.use(chargeRouter);
+app.use(stripeRouter);
 
 module.exports = app;
