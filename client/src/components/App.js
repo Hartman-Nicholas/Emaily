@@ -8,7 +8,7 @@ import Header from "./Header";
 import Landing from "./Landing";
 import SurveyNew from "./SurveyNew";
 import UserInfo from "./UserInfo";
-import CheckoutForm from "./CheckoutForm";
+import CheckoutForm from "./forms/CheckoutForm";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -21,11 +21,11 @@ const App = () => {
       <div className="container">
         <Header />
         <Switch>
-          <Route path="/checkoutForm" exact component={CheckoutForm} />
           <Route path="/" exact component={Landing} />
           <Route path="/surveys" exact component={DashBoard} />
           <Route path="/surveys/new" exact component={SurveyNew} />
           <Route path="/UserInfo" exact component={UserInfo} />
+          <Route path="/checkoutForm" exact component={CheckoutForm} />
         </Switch>
       </div>
     </Router>

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { handlePayment } from "../components/store/actions/index";
+import { handlePayment } from "../store/actions/index";
 import {
   Elements,
   CardElement,
