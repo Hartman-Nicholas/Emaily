@@ -4,6 +4,7 @@ import createDecorator from "final-form-focus";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 import validateEmails from "../../utils/validateEmails";
+import FormStateToRedux from "./FormStateToRedux";
 
 const required = (value) => (value ? undefined : "Required");
 const emailCheck = (value) => {
@@ -21,12 +22,14 @@ const SurveyForm = (props) => {
       <Form
         onSubmit={props.onSubmit}
         decorators={[focusOnError]}
+        keepDirtyOnReinitialize
         subscription={{
           submitting: true,
         }}
       >
-        {({ handleSubmit, submitting, pristine }) => (
+        {({ handleSubmit, form, submitting, pristine }) => (
           <form onSubmit={handleSubmit}>
+            <FormStateToRedux form="SurveyForm" />
             <Field
               name="surveyTitle"
               placeholder={surveyTitle}
@@ -115,7 +118,7 @@ const SurveyForm = (props) => {
               Next
               <i className="material-icons right">done</i>
             </button>
-            <FormSpy subscription={{ submitSucceeded: true }}>
+            <FormSpy subscription={{ submitSucceeded: true, values: true }}>
               {({ submitSucceeded }) => {
                 if (submitSucceeded) {
                   return <Redirect to="/surveys/new" />;
@@ -123,6 +126,7 @@ const SurveyForm = (props) => {
                 return <div></div>;
               }}
             </FormSpy>
+            <FormStateToRedux form="SurveyForm" />
                         
           </form>
         )}

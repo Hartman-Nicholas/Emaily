@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Recipient = require("./recipient").schema;
 
 const surveySchema = new mongoose.Schema({
-  title: String,
+  surveyTitle: String,
   body: String,
   subject: String,
   recipients: [Recipient],

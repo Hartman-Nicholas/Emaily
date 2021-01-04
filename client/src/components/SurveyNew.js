@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import SurveyForm from "./forms/SurveyForm";
 import SurveyFormReview from "./forms/SurveyFormReview";
-// import { useDispatch } from "react-redux";
-// import { createStream } from "../../actions";
 
 const SurveyNew = () => {
   const [showFormReview, setFormReview] = useState(false);
 
-  // const dispatch = useDispatch();
-  const onSubmit = (formValues) => {
+  const onSubmit = () => {
     setFormReview(true);
   };
 

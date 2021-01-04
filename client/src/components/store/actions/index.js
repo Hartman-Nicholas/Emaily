@@ -19,17 +19,27 @@ export const handlePayment = (id, value) => async (dispatch) => {
   dispatch({ type: actionTypes.FETCH_USER, payload: res.data });
 };
 
-// const elements = useElements();
-// const { error, paymentMethod } = await stripe.createPaymentMethod({
-//   type: "card",
-//   card: elements.getElement(CardElement),
-// });
-// if (!error) {
-//   const { id } = paymentMethod;
-//   try {
-//     const { data } = await axios.post("/api/charge", { id, amount: 1099 });
-//     console.log(data);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
+export const updateFormState = (form, state) => ({
+  type: actionTypes.UPDATE_FORM_STATE,
+  form,
+  payload: state,
+});
+
+export const submitSurvey = (values, history) => async (dispatch) => {
+  const res = await axios.post("/api/surveys", values);
+
+  history.push("/surveys");
+  dispatch({ type: actionTypes.FETCH_USER, payload: res.data });
+};
+
+export const fetchSurveys = async (dispatch) => {
+  const res = await axios.get("/api/surveys");
+
+  dispatch({ type: actionTypes.FETCH_SURVEYS, payload: res.data });
+};
+
+export const deleteSurvey = (id) => async (dispatch) => {
+  await axios.delete(`/api/surveys/${id}`);
+
+  dispatch({ type: actionTypes.DELETE_SURVEY, payload: id });
+};
