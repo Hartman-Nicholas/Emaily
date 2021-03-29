@@ -30,7 +30,7 @@ const SurveyNew = () => {
     return <SurveyFormReview onCancel={onCancel} />;
   };
 
-  return <div>{renderContent()}</div>;
+  return <div className="surveyContainer">{renderContent()}</div>;
 };
 
 export default SurveyNew;

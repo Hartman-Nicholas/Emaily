@@ -1,0 +1,28 @@
+.paymentForm {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  &__form {
+    padding: 2rem;
+    background: $color-white;
+    @include bs;
+    font-family: $font-face-secondary;
+    font-weight: $font-weight-regular;
+    font-size: $font-size-p-regular;
+    text-align: center;
+
+    &__submit {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.5rem;
+      margin-left: 1.5rem;
+      margin-right: 1.5rem;
+    }
+
+    &__card {
+      padding: 1rem;
+      border: 1px solid black;
+      margin-top: 1rem;
+    }
+  }
+}

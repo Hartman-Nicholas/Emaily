@@ -1,0 +1,13 @@
+.landing {
+  padding: 2rem;
+  text-align: center;
+  &__img {
+    max-width: 100%;
+    max-height: 350px;
+    overflow: none;
+  }
+
+  &__mainHeading {
+    color: $color-purple;
+  }
+}

@@ -1,0 +1,40 @@
+.footer {
+  background: #eac5d8;
+  color: $color-primary-dark;
+  text-align: center;
+  padding: 1.5em 0;
+  font-size: $font-size-p-regular;
+  margin-top: auto;
+
+  a {
+    color: #36393b;
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: $font-weight-medium-bold;
+  }
+}
+
+.footer__link:hover,
+.social-list__link:hover {
+  opacity: 0.7;
+}
+
+.footer__link:hover {
+  text-decoration: underline;
+}
+
+.social-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0.8em 0 0;
+  padding: 0;
+}
+
+.social-list__item {
+  margin: 0 0.5em;
+}
+
+.social-list__link {
+  padding: 0.5em;
+}

@@ -18,7 +18,7 @@ const focusOnError = createDecorator();
 const SurveyForm = (props) => {
   const { surveyTitle, subject, body, recipients } = props.initialValues;
   return (
-    <div className="ui form error">
+    <div className="surveyForm">
       <Form
         onSubmit={props.onSubmit}
         decorators={[focusOnError]}
@@ -27,7 +27,7 @@ const SurveyForm = (props) => {
           submitting: true,
         }}
       >
-        {({ handleSubmit, form, submitting, pristine }) => (
+        {({ handleSubmit, submitting, pristine }) => (
           <form onSubmit={handleSubmit}>
             <FormStateToRedux form="SurveyForm" />
             <Field
@@ -36,51 +36,45 @@ const SurveyForm = (props) => {
               validate={required}
             >
               {({ input, meta, placeholder }) => (
-                <div className={`field ${meta.active ? "active" : ""}`}>
-                  <label>Survey Title</label>
-                  <input
-                    {...input}
-                    style={{ marginBottom: "5px" }}
-                    placeholder={placeholder}
-                  />
+                <div
+                  className={`surveyForm__field ${
+                    meta.active ? "--active" : ""
+                  }`}
+                >
+                  <label>Survey Title:</label>
+                  <input {...input} placeholder={placeholder} />
                   {meta.error && meta.touched && (
-                    <span className="red-text" style={{ marginBottom: "20px" }}>
-                      {meta.error}
-                    </span>
+                    <span className="surveyForm__required">{meta.error}</span>
                   )}
                 </div>
               )}
             </Field>
             <Field name="subject" placeholder={subject} validate={required}>
               {({ input, meta, placeholder }) => (
-                <div className={`field ${meta.active ? "active" : ""}`}>
-                  <label>Subject Line</label>
-                  <input
-                    {...input}
-                    style={{ marginBottom: "5px" }}
-                    placeholder={placeholder}
-                  />
+                <div
+                  className={`surveyForm__field ${
+                    meta.active ? "--active" : ""
+                  }`}
+                >
+                  <label>Subject Line:</label>
+                  <input {...input} placeholder={placeholder} />
                   {meta.error && meta.touched && (
-                    <span className="red-text" style={{ marginBottom: "20px" }}>
-                      {meta.error}
-                    </span>
+                    <span className="surveyForm__required">{meta.error}</span>
                   )}
                 </div>
               )}
             </Field>
             <Field name="body" placeholder={body} validate={required}>
               {({ input, meta, placeholder }) => (
-                <div className={`field ${meta.active ? "active" : ""}`}>
-                  <label>Email Body</label>
-                  <input
-                    {...input}
-                    style={{ marginBottom: "5px" }}
-                    placeholder={placeholder}
-                  />
+                <div
+                  className={`surveyForm__field ${
+                    meta.active ? "--active" : ""
+                  }`}
+                >
+                  <label>Email Body:</label>
+                  <textarea {...input} placeholder={placeholder} />
                   {meta.error && meta.touched && (
-                    <span className="red-text" style={{ marginBottom: "20px" }}>
-                      {meta.error}
-                    </span>
+                    <span className="surveyForm__required">{meta.error}</span>
                   )}
                 </div>
               )}
@@ -91,15 +85,15 @@ const SurveyForm = (props) => {
               validate={composeValidators(required, emailCheck)}
             >
               {({ input, meta, placeholder }) => (
-                <div className={`field ${meta.active ? "active" : ""}`}>
-                  <label>Recipient List</label>
-                  <input
-                    {...input}
-                    style={{ marginBottom: "5px" }}
-                    placeholder={placeholder}
-                  />
+                <div
+                  className={`surveyForm__field ${
+                    meta.active ? "--active" : ""
+                  }`}
+                >
+                  <label>Recipient List:</label>
+                  <input {...input} placeholder={placeholder} />
                   {meta.error && meta.touched && (
-                    <span className="red-text" style={{ marginBottom: "20px" }}>
+                    <span className="surveyForm__required">
                       {meta.error}
                       {console.log(meta.error)}
                     </span>
@@ -107,17 +101,14 @@ const SurveyForm = (props) => {
                 </div>
               )}
             </Field>
-            <Link to="/surveys" className="red btn-flat white-text">
-              Cancel
-            </Link>
-            <button
-              className="teal btn-flat right white-text"
-              type="submit"
-              disabled={pristine || submitting}
-            >
-              Next
-              <i className="material-icons right">done</i>
-            </button>
+            <div className="surveyForm__submit">
+              <Link className="btn--cancel" to="/surveys">
+                Cancel
+              </Link>
+              <button type="submit" disabled={pristine || submitting}>
+                Next
+              </button>
+            </div>
             <FormSpy subscription={{ submitSucceeded: true, values: true }}>
               {({ submitSucceeded }) => {
                 if (submitSucceeded) {

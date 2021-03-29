@@ -1,0 +1,37 @@
+.header {
+  background: #dbabbe;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  font-size: $font-size-p-regular;
+
+  &__logo {
+    &:hover {
+      color: $color-grey-light-1;
+    }
+  }
+
+  &__login {
+    &:hover {
+      color: $color-grey-light-1;
+      transform: scale(1.1);
+    }
+  }
+
+  &__logout {
+    display: flex;
+
+    &--item {
+      margin-left: 2rem;
+
+      &:hover {
+        color: $color-grey-light-1;
+        transform: scale(1.1);
+      }
+
+      &:hover a {
+        color: $color-grey-light-1;
+      }
+    }
+  }
+}

@@ -12,28 +12,30 @@ const SurveyList = () => {
 
   const renderSurveyList = () => {
     if (surveys) {
-      console.log(surveys);
       return surveys.reverse().map((survey) => {
         return (
-          <div className="card blue-grey darken-1" key={survey._id}>
-            <div className="card-content">
-              <span className="card-title">{survey.surveyTitle}</span>
-              <p>{survey.body}</p>
-              <p className="right">
+          <div className="surveyCard" key={survey._id}>
+            <div className="surveyCard__content">
+              <h2 className="surveyCard__content--title">
+                {survey.surveyTitle}
+              </h2>
+              <p className="surveyCard__content--body">{survey.body}</p>
+              <p className="surveyCard__response--sent">
                 Sent On: {new Date(survey.dateSent).toLocaleDateString()}
               </p>
-            </div>
-            <div className="card-action">
-              <button>Yes: {survey.yes}</button>
-              <button>No: {survey.no}</button>
-              <button
-                className="right"
-                onClick={() => {
-                  dispatch(actions.deleteSurvey(survey._id));
-                }}
-              >
-                Delete
-              </button>
+
+              <div className="surveyCard__response">
+                <p className="surveyCard__response--item">Yes: {survey.yes}</p>
+                <p className="surveyCard__response--item">No: {survey.no}</p>
+                <button
+                  className="surveyCard__response--delete"
+                  onClick={() => {
+                    dispatch(actions.deleteSurvey(survey._id));
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
             </div>
           </div>
         );

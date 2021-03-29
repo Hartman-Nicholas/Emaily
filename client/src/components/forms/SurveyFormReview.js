@@ -8,46 +8,41 @@ const SurveyFormReview = ({ onCancel }) => {
   const dispatch = useDispatch();
   const { surveyTitle, subject, recipients, body } = form;
   return (
-    <div>
-      <h5>Please confirm your entry</h5>
+    <div className="surveyReview">
+      <h2 className="surveyReview__title">Please confirm your entry</h2>
       <div>
         <div>
-          <label>Survey Title</label>
-          <div>{surveyTitle}</div>
+          <h4 className="surveyReview__subTitle">Survey Title</h4>
+          <div className="surveyReview__content">{surveyTitle}</div>
         </div>
       </div>
       <div>
         <div>
-          <label>Subject Line</label>
-          <div>{subject}</div>
+          <h4 className="surveyReview__subTitle">Subject Line</h4>
+          <div className="surveyReview__content">{subject}</div>
         </div>
       </div>
       <div>
         <div>
-          <label>Email Body</label>
-          <div>{body}</div>
+          <h4 className="surveyReview__subTitle">Email Body</h4>
+          <div className="surveyReview__content">{body}</div>
         </div>
       </div>
       <div>
         <div>
-          <label>Recipient List</label>
-          <div>{recipients}</div>
+          <h4 className="surveyReview__subTitle">Recipient List</h4>
+          <div className="surveyReview__content">{recipients}</div>
         </div>
       </div>
 
-      <button
-        className="yellow darken-3 white-text btn-flat"
-        onClick={onCancel}
-      >
-        Back
-      </button>
-      <button
-        className="green btn-flat right white-text"
-        onClick={() => dispatch(actions.submitSurvey(form, history))}
-      >
-        Send Survey
-        <i className="material-icons right">email</i>
-      </button>
+      <div className="surveyForm__submit">
+        <button className="btn--cancel" onClick={onCancel}>
+          Back
+        </button>
+        <button onClick={() => dispatch(actions.submitSurvey(form, history))}>
+          Send
+        </button>
+      </div>
     </div>
   );
 };

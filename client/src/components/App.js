@@ -9,6 +9,8 @@ import Landing from "./Landing";
 import SurveyNew from "./SurveyNew";
 import UserInfo from "./UserInfo";
 import CheckoutForm from "./forms/CheckoutForm";
+import Footer from "./Footer";
+import PaymentFailure from "./PaymentFailure";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -26,7 +28,9 @@ const App = () => {
           <Route path="/surveys/new" exact component={SurveyNew} />
           <Route path="/UserInfo" exact component={UserInfo} />
           <Route path="/checkoutForm" exact component={CheckoutForm} />
+          <Route path="/paymentFailure" exact component={PaymentFailure} />
         </Switch>
+        <Footer />
       </div>
     </Router>
   );

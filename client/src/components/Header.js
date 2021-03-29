@@ -12,18 +12,20 @@ const Header = () => {
       case false:
         return (
           <li>
-            <a href="/auth/google">Login With Google</a>
+            <a className="header__login" href="/auth/google">
+              <i className="fab fa-google"></i> Login
+            </a>
           </li>
         );
 
       default:
         return (
-          <div>
-            <li>
+          <div className="header__logout">
+            <li className="header__logout--item">
               <Link to="/checkoutForm">Add Credits</Link>
             </li>
-            <li style={{ margin: "0 10px" }}>Credits: {auth.credits}</li>
-            <li>
+            <li className="header__logout--item">Credits: {auth.credits}</li>
+            <li className="header__logout--item">
               <a href="/api/logout">Logout</a>
             </li>
           </div>
@@ -32,13 +34,11 @@ const Header = () => {
   };
 
   return (
-    <nav>
-      <div className="nav-wrapper">
-        <Link to={auth ? "/surveys" : "/"} className="left brand-logo">
-          Emaily
-        </Link>
-        <ul className="right">{renderContent()}</ul>
-      </div>
+    <nav className="header">
+      <Link className="header__logo" to={auth ? "/surveys" : "/"}>
+        Emaily
+      </Link>
+      <ul>{renderContent()}</ul>
     </nav>
   );
 };
